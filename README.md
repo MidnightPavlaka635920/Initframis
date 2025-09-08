@@ -10,7 +10,8 @@ Sadly, this doesn't work on Windows CMD. I don't know about powershell, or any o
 ## Compiling
 To compile initframis, run ```g++ main.cpp -o main -I/usr/local/include/opencv4 \
 -L/usr/local/lib \
--lopencv_core -lopencv_imgproc -lopencv_highgui -lopencv_videoio -lopencv_imgcodecs ```
+-lopencv_core -lopencv_imgproc -lopencv_highgui -lopencv_videoio -lopencv_imgcodecs 
+```
 op 3
 ## Usage
 To use this, run `initframis input.mp4 80 output.full h`
