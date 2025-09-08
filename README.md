@@ -8,4 +8,4 @@ Sadly, this doesn't work on Windows CMD. I don't know about powershell, or any o
 -OpenCV is core of this project. It handles video loading, Pixel reading, etc.
 -ffmpeg cause ooenCV should be compiled with ffmpeg.
 ## Compiling
-To compile this, run `g++ initframis.cpp -o initframis`
+To compile this, run `g++ main.cpp -o main -I/usr/local/include/opencv4 -L/usr/local/lib -lopencv_core -lopencv_imgproc -lopencv_highgui -lopencv_videoio -lopencv_imgcodecs`
