@@ -25,7 +25,7 @@ To use this, run
 
 
 
-from your initframis binary directory unless you installed it to the $PATH.
+from your initframis binary directory unless you installed it to the `$PATH`.
 Of course, you will need to specify input video file. Output is saved to current directory if not specified.
 ### Arguments
 - `input.mp4` Input video file. Can be any valid video file, needs read permissions.
