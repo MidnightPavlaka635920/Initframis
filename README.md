@@ -12,3 +12,7 @@ To compile initframis, run `g++ main.cpp -o main -I/usr/local/include/opencv4 -L
 ## Usage
 To use this, run `initframis input.mp4 80 output.full h`
 Of course, you will need to specify input video file. Output is saved to current directory if not specified.
+### Arguments
+- `input.mp4` input video file. Can be any valid video file, needs read permissions.
+- `80` width you want output to be, in characters, can be any normal number. Just make sure that height would fit in your terminal.
+- `output.full` output/result file, I am using full file type. Can be any valid file, needs wrote permission.
