@@ -21,3 +21,4 @@ Of course, you will need to specify input video file. Output is saved to current
 - `80` Width you want output to be, in characters, can be any normal number. Just make sure that height would fit in your terminal.
 - `output.full` Output/result file, I am using full file type. Can be any valid file, needs write permission.
 - `h` Type of output characters. Can be ONLY `h` or `f`. H gives double the vertical resolution, uses upper-half characters. F gives full characters, so smaller vertical resolution.
+```
