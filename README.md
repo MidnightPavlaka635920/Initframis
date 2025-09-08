@@ -18,7 +18,7 @@ g++ main.cpp -o main -I/usr/local/include/opencv4 \
 
 
 ## Usage
-To use this, run `initframis input.mp4 80 output.full h`
+To use this, run `./initframis input.mp4 80 output.full h` from your initframis binary directory unless you installed it to the $PATH.
 Of course, you will need to specify input video file. Output is saved to current directory if not specified.
 ### Arguments
 - `input.mp4` Input video file. Can be any valid video file, needs read permissions.
