@@ -6,7 +6,7 @@ Sadly, this doesn't work on Windows CMD. I don't know about powershell, or any o
 ## Dependencies
 -This is a C++ project, so you will need g++ for compiling in Linux or something else on Windows.
 -OpenCV is core of this project. It handles video loading, Pixel reading, etc.
--ffmpeg cause ooenCV should be compiled with ffmpeg.
+-ffmpeg cause openCV should be compiled with ffmpeg.
 ## Compiling
 To compile initframis, run `g++ main.cpp -o main -I/usr/local/include/opencv4 -L/usr/local/lib -lopencv_core -lopencv_imgproc -lopencv_highgui -lopencv_videoio -lopencv_imgcodecs`
 ## Usage
@@ -15,5 +15,5 @@ Of course, you will need to specify input video file. Output is saved to current
 ### Arguments
 - `input.mp4` Input video file. Can be any valid video file, needs read permissions.
 - `80` Width you want output to be, in characters, can be any normal number. Just make sure that height would fit in your terminal.
-- `output.full` Output/result file, I am using full file type. Can be any valid file, needs wrote permission.
+- `output.full` Output/result file, I am using full file type. Can be any valid file, needs write permission.
 - `h` Type of output characters. Can be ONLY `h` or `f`. H gives double the vertical resolution, uses upper-half characters. F gives full characters, so smaller vertical resolution.
