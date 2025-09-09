@@ -25,6 +25,7 @@ To use this, run
 
 from your initframis binary directory unless you installed it to the `$PATH`which you can check by running `echo $PATH`.
 Of course, you will need to specify input video file. Output is saved to current directory if not specified.
+After the program is done, it will show height of output, and that can be used in `grr.sh` to display video, with addition to audio.
 ### Arguments
 - `input.mp4` Input video file. Can be any valid video file, needs read permissions.
 - `80` Width you want output to be, in characters, can be any normal number. Just make sure that height would fit in your terminal.
