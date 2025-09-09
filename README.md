@@ -11,9 +11,7 @@ Sadly, this doesn't work on Windows CMD. I don't know about powershell, or any o
 To compile initframis, run 
 
 ```bash
-g++ main.cpp -o main -I/usr/local/include/opencv4 \
--L/usr/local/lib \
--lopencv_core -lopencv_imgproc -lopencv_highgui -lopencv_videoio -lopencv_imgcodecs
+g++ initframis.cpp -o initframis -I/usr/local/include/opencv4 -L/usr/local/lib -lopencv_core -lopencv_imgproc -lopencv_highgui -lopencv_videoio -lopencv_imgcodecs -lva -lva-drm -lva-x11
 ```
 
 
@@ -25,7 +23,7 @@ To use this, run
 
 
 
-from your initframis binary directory unless you installed it to the `$PATH`.
+from your initframis binary directory unless you installed it to the `$PATH`which you can check by running `echo $PATH`.
 Of course, you will need to specify input video file. Output is saved to current directory if not specified.
 ### Arguments
 - `input.mp4` Input video file. Can be any valid video file, needs read permissions.
