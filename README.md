@@ -3,6 +3,7 @@
 Initframis is a program that transfers videos to ASCII full or half characters in an ANSI text file.
 I got the idea from rickroll in terminal.
 Sadly, this doesn't work on Windows CMD. I don't know about powershell, or any other consoles, but it works on Linux.
+<img width="100" alt="image" src="https://github.com/user-attachments/assets/6260894b-5f74-4fea-a48d-abd5eb2271a9" />
 ## Dependencies
 - This is a C++ project, so you will need g++ for compiling in Linux or something else on Windows.
 - OpenCV is core of this project. It handles video loading, Pixel reading, etc.
