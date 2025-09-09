@@ -1,5 +1,6 @@
 # Initframis
 <img width="1000" alt="image" src="https://github.com/user-attachments/assets/6260894b-5f74-4fea-a48d-abd5eb2271a9" />
+
 ## About
 Initframis is a program that transfers videos to ASCII full or half characters in an ANSI text file.
 I got the idea from rickroll in terminal.
