@@ -13,7 +13,7 @@ Sadly, this doesn't work on Windows CMD. I don't know about powershell, or any o
 To compile initframis, run 
 
 ```bash
-g++ initframis.cpp -o initframis -I/usr/local/include/opencv4 -L/usr/local/lib -lopencv_core -lopencv_imgproc -lopencv_highgui -lopencv_videoio -lopencv_imgcodecs -lva -lva-drm -lva-x11
+g++ initframis.cpp -o initframis $(pkg-config --cflags --libs opencv4)
 ```
 
 
