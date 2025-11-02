@@ -83,15 +83,22 @@ int main(int argc, char **argv) {
     }
 
     const char* filename = argv[1];
-    int desiredWidth = atoi(argv[2]);
     const char* outFileName = argv[3];
     const char* typeOfPixels = argv[4];
+    int desiredWidth = atoi(argv[2]);
 
     cv::VideoCapture cap(filename);
     if(!cap.isOpened()) { printf("Cannot open video %s\n", filename); return 1; }
 
-    FILE *out = fopen(outFileName,"w");
-    if(!out) { printf("Cannot open output %s\n", outFileName); return 1; }
+    //FILE *out = fopen(outFileName,"w");
+    //if(!out) { printf("Cannot open output %s\n", outFileName); return 1; }
+    FILE *out;
+    if (strcmp(outFileName, "-") == 0) {
+        out = stdout;
+    } else {
+        out = fopen(outFileName, "w");
+        if(!out) { printf("Cannot open output %s\n", outFileName); return 1; }
+    }
 
     cv::Mat frame;
 
@@ -102,12 +109,25 @@ int main(int argc, char **argv) {
     int videoWidth  = frame.cols;
     int videoHeight = frame.rows;
     float aspectRatio = static_cast<float>(videoWidth)/videoHeight;
+    int desiredWidthF = 0;
 
-    int blockWidth = videoWidth / desiredWidth;
-    int termHeight = static_cast<int>(desiredWidth / aspectRatio / 2);
-    int blockHeight = videoHeight / (termHeight * 2);
+    if (desiredWidth > 0) {
+        desiredWidthF = desiredWidth;
+    } else if (desiredWidth == 0) {
+        if (aspectRatio > 1) {
+            desiredWidthF = videoWidth / 8;
+        } else if (aspectRatio < 1) {
+            desiredWidthF = videoHeight / 16 /(aspectRatio * 2);
+        }
+    }
 
-    unsigned int TW = desiredWidth;
+    // Fixed calculations
+    int blockWidth  = std::max(1, videoWidth / desiredWidthF);
+    int termHeight  = static_cast<int>(desiredWidthF / aspectRatio / 2);
+    int blockHeight = std::max(1, videoHeight / (termHeight * 2));
+
+
+    unsigned int TW = desiredWidthF;
     TH = termHeight;
     double fps = cap.get(cv::CAP_PROP_FPS);
     int totalFrames = static_cast<int>(cap.get(cv::CAP_PROP_FRAME_COUNT));
@@ -120,13 +140,12 @@ int main(int argc, char **argv) {
 // Process first frame (already grabbed)
 do {
     for(int by=0; by<termHeight; by++) {
-        for(int bx=0; bx<desiredWidth; bx++) {
+        for(int bx=0; bx<desiredWidthF; bx++) {
             processFrameBlock(frame, bx, by, blockWidth, blockHeight, out, typeOfPixels);
         }
         fprintf(out, "\033[0m\n"); // reset colors + newline
     }
-
-    std::cout << "Processed frame " << frameCount << " of " << totalFrames << "\r" << std::flush;
+    std::cerr << "Processed frame " << frameCount << " of " << totalFrames << "\r" << std::flush;
     frameCount++;
 } while (cap.read(frame));  // <-- use .read() which returns bool
 
@@ -135,4 +154,3 @@ do {
     fclose(out);
     return 0;
 }
-
