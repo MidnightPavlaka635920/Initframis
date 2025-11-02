@@ -20,7 +20,7 @@ void showHelp(const char* progName) {
 }
 
 void showVersion() {
-    std::cout << "initframis 1.0 (Video to ANSI renderer)\n";
+    std::cout << "initframis 1.3 (Video to ANSI renderer)\n";
 }
 
 void processFrameBlock(cv::Mat &frame, int bx, int by, int blockWidth, int blockHeight, FILE *out, const char* tOP) {
