@@ -81,7 +81,9 @@ int main(int argc, char **argv) {
         showHelp(argv[0]);
         return 1;
     }
-
+    #ifdef _WIN32
+        _setmode(_fileno(stdout), _O_BINARY);
+    #endif
     const char* filename = argv[1];
     const char* outFileName = argv[3];
     const char* typeOfPixels = argv[4];
