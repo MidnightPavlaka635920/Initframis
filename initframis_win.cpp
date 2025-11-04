@@ -2,6 +2,8 @@
 #endif
 #include <io.h>
 #include <fcntl.h>
+#include <windows.h>
+#include <locale>
 #include <opencv2/opencv.hpp>
 #include <stdio.h>
 #include <string.h>
@@ -70,6 +72,10 @@ void processFrameBlock(cv::Mat &frame, int bx, int by, int blockWidth, int block
 
 int main(int argc, char **argv) {
     // Help/version first
+    //setlocale(LC_ALL, "en_US.UTF-8");
+        SetConsoleOutputCP(CP_UTF8);
+    SetConsoleCP(CP_UTF8);
+    std::setlocale(LC_ALL, ".UTF-8");
     if(argc > 1) {
         if(strcmp(argv[1], "-h") == 0 || strcmp(argv[1], "--help") == 0) {
             showHelp(argv[0]);
