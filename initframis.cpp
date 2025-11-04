@@ -1,3 +1,9 @@
+#ifdef _WIN32
+    #include <io.h>
+    #include <fcntl.h>
+    #include <windows.h>
+    #include <locale>
+#endif
 #include <opencv2/opencv.hpp>
 #include <stdio.h>
 #include <string.h>
@@ -65,6 +71,13 @@ void processFrameBlock(cv::Mat &frame, int bx, int by, int blockWidth, int block
 }
 
 int main(int argc, char **argv) {
+    #ifdef _WIN32
+        setlocale(LC_ALL, "en_US.UTF-8");
+        SetConsoleOutputCP(CP_UTF8);
+        SetConsoleCP(CP_UTF8);
+        std::setlocale(LC_ALL, ".UTF-8");
+        _setmode(_fileno(stdout), _O_BINARY);
+    #endif
     // Help/version first
     if(argc > 1) {
         if(strcmp(argv[1], "-h") == 0 || strcmp(argv[1], "--help") == 0) {
@@ -81,9 +94,6 @@ int main(int argc, char **argv) {
         showHelp(argv[0]);
         return 1;
     }
-    #ifdef _WIN32
-        _setmode(_fileno(stdout), _O_BINARY);
-    #endif
     const char* filename = argv[1];
     const char* outFileName = argv[3];
     const char* typeOfPixels = argv[4];
@@ -98,7 +108,11 @@ int main(int argc, char **argv) {
     if (strcmp(outFileName, "-") == 0) {
         out = stdout;
     } else {
-        out = fopen(outFileName, "w");
+        #ifdef _WIN32
+            out = fopen(outFileName, "wb");
+        #else
+            out = fopen(outFileName, "w");
+        #endif
         if(!out) { printf("Cannot open output %s\n", outFileName); return 1; }
     }
 
