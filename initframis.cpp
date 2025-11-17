@@ -22,11 +22,12 @@ void showHelp(const char* progName) {
               << "  output.full       Output file (text with ANSI colors)\n"
               << "  mode              'h' = half-blocks (▀), 'f' = full-blocks (█)\n\n"
               << "Example:\n"
-              << "  " << progName << " demo.mp4 80 output.txt h\n";
+              << "  " << progName << " demo.mp4 80 output.txt h\n"
+              << "More info at: https://github.com/MidnightPavlaka635920/Initframis\n";
 }
 
 void showVersion() {
-    std::cout << "initframis 1.4 (Video to ANSI renderer)\n";
+    std::cout << "initframis 1.5 (Video to ANSI renderer)\n";
 }
 
 void processFrameBlock(cv::Mat &frame, int bx, int by, int blockWidth, int blockHeight, FILE *out, const char* tOP) {
@@ -130,11 +131,7 @@ int main(int argc, char **argv) {
     if (desiredWidth > 0) {
         desiredWidthF = desiredWidth;
     } else if (desiredWidth == 0) {
-        if (aspectRatio > 1) {
-            desiredWidthF = videoWidth / 8;
-        } else if (aspectRatio < 1) {
-            desiredWidthF = videoHeight / 16 /(aspectRatio * 2);
-        }
+        desiredWidthF = videoWidth / 8;
     }
 
     // Fixed calculations
