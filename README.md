@@ -31,7 +31,7 @@ Of course, you will need to specify input video file. Output is saved to current
 After the program is done, it will show height of output, and that can be used in `grr.sh` to display video, with addition to audio.
 ### Arguments
 - `input.mp4` Input video file. Can be any valid video file, needs read permissions.
-- `80` Width you want output to be, in characters, can be any normal number. Just make sure that height would fit in your terminal.
+- `80` Width you want output to be, in characters, can be any normal number. Just make sure that height would fit in your terminal. Or, use 0 for the best quality that video resolution could do **(1.5+)**.
 - `output.full` Output/result file, I am using full file type. Can be any valid file, needs write permission.
 - `h` Type of output characters. Can be ONLY `h` or `f`. H gives double the vertical resolution, uses upper-half characters. F gives full characters, so smaller vertical resolution.
 ## Output structure
